@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Rock, Paper, Scissors Game</title>
+</head>
+<body>
+	<div id="game">
+	<h1>Press r, p or s keys to start playing against the computer!</h1>
+
+	<h2>Wins: <span id="wins">0</span></h2>
+	<h2>Losses: <span id="losses">0</span></h2>
+	<h2>Ties: <span id="ties">0</span></h2>
+	</div>
+
+	<script type="text/javascript">
+
+		var wins = 0;
+		var losses = 0;
+		var ties = 0;
+
+		document.onkeyup = function(event) {
+			var possiblePicks = ["r", "p", "s"];
+			var userPick = event.key;
+			var computerPick = possiblePicks[Math.floor(Math.random() * possiblePicks.length)];
+
+		if ((userPick === "r") || (userPick === "s") || (userPick === "p")) {
+
+			if ((userPick === "r") && (computerPick === "p")) {
+				losses++
+				alert("You lost! :(");
+			} else if ((userPick === "r") && (computerPick === "s")) {
+				wins++
+				alert("You won! :)");
+			} else if ((userPick === "s") && (computerPick === "p")) {
+				wins++
+				alert("You won! :)");
+			} else if ((userPick === "s") && (computerPick === "r")) {
+				losses++
+				alert("You lost! :(");
+			} else if ((userPick === "p") && (computerPick === "r")) {
+				wins++
+				alert("You won! :)");
+			} else if ((userPick === "p") && (computerPick === "s")) {
+				losses++
+				alert("You lost! :(");
+			}
+			else {
+				ties++
+				alert("It was a tie!");
+			}
+		} else {
+			alert("Please press p, r or s!");
+		}
+
+		var html = "<h1>Press r, p or s keys to start playing against the computer!</h1>" + "<h2>Wins: "+ wins + "</h2>" + "<h2>Losses "+ losses + "</h2>" + "<h2>Ties: " + ties;
+
+		document.getElementById("game").innerHTML = html;
+	};
+
+	</script>
+
+</body>
+</html>
